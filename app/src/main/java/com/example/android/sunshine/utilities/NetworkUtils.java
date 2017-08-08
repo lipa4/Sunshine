@@ -49,13 +49,14 @@ public final class NetworkUtils {
      * you can do so by setting the FORECAST_BASE_URL to STATIC_WEATHER_URL below.
      */
     private static final String DYNAMIC_WEATHER_URL =
-            "https://andfun-weather.udacity.com/weather";
+            "http://api.openweathermap.org/data/2.5/forecast/daily";
 
     private static final String STATIC_WEATHER_URL =
-            "https://andfun-weather.udacity.com/staticweather";
+            "http://api.openweathermap.org/data/2.5/forecast/daily";
 
     private static final String FORECAST_BASE_URL = STATIC_WEATHER_URL;
 
+    private static final String API_KEY = "3cfb0c2a993aa2dd2c523a1b825bbdbd";
     /*
      * NOTE: These values only effect responses from OpenWeatherMap, NOT from the fake weather
      * server. They are simply here to allow us to teach you how to build a URL if you were to use
@@ -82,6 +83,8 @@ public final class NetworkUtils {
     private static final String UNITS_PARAM = "units";
     /* The days parameter allows us to designate how many days of weather data we want */
     private static final String DAYS_PARAM = "cnt";
+    /*The app id parameter is used to identify us on the server*/
+    private static final String API_KEY_PARAM = "APPID";
 
     /**
      * Retrieves the proper URL to query for the weather data. The reason for both this method as
@@ -124,6 +127,7 @@ public final class NetworkUtils {
                 .appendQueryParameter(FORMAT_PARAM, format)
                 .appendQueryParameter(UNITS_PARAM, units)
                 .appendQueryParameter(DAYS_PARAM, Integer.toString(numDays))
+                .appendQueryParameter(API_KEY_PARAM,API_KEY)
                 .build();
 
         try {
@@ -149,6 +153,7 @@ public final class NetworkUtils {
                 .appendQueryParameter(FORMAT_PARAM, format)
                 .appendQueryParameter(UNITS_PARAM, units)
                 .appendQueryParameter(DAYS_PARAM, Integer.toString(numDays))
+                .appendQueryParameter(API_KEY_PARAM,API_KEY)
                 .build();
 
         try {

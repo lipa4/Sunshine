@@ -16,9 +16,11 @@
 package com.example.android.sunshine;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.CursorLoader;
 import android.support.v4.content.Loader;
@@ -31,6 +33,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 
 import com.example.android.sunshine.data.SunshinePreferences;
 import com.example.android.sunshine.data.WeatherContract;
@@ -171,7 +174,7 @@ public class MainActivity extends AppCompatActivity implements
         String posLat = Double.toString(coords[0]);
         String posLong = Double.toString(coords[1]);
         Uri geoLocation = Uri.parse("geo:" + posLat + "," + posLong);
-
+        Log.v("CREATED URL:", geoLocation.toString());
         Intent intent = new Intent(Intent.ACTION_VIEW);
         intent.setData(geoLocation);
 
